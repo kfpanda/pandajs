@@ -1,0 +1,58 @@
+{
+  "name": "panda",
+  "family": "panda",
+  "version": "1.0.2",
+  "description": "panda util",
+  "homepage": "http://kfpanda.com",
+  "author": {
+    "name": "kfpanda",
+    "email": "liuhualuo@163.com",
+    "url": "http://kfpanda.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:/panda"
+  },
+  "bugs": {
+    "url": "http://kfpanda.com/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://kfpanda.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/panda",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "spm": {
+    "alias": {
+      "jquery": "jquery/jquery/1.9.1/jquery"
+    },
+    "engines": {
+      "seajs": "seajs/seajs/2.0.0/sea.js"
+    },
+    "source": "src",
+    "output": [
+      
+    ]
+  },
+  "devDependencies": {
+    "grunt-cmd-transport": "~0.2.0",
+    "grunt-cmd-concat": "~0.1.0",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-uglify": "~0.9.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.4.1",
+    "grunt-mocha-cli": "~1.0.4",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt": "~0.4.0"
+  },
+  "keywords": []
+}

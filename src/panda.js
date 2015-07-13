@@ -1,4 +1,11 @@
-﻿(function(){
+﻿/**
+ * panda 为公共方法类
+ * @file
+ * @version 1.0.2
+ * @copyright copyright
+ * @author : liuhualuo@163.com
+ */
+(function(){
 	var global = this,
 		objectPrototype = Object.prototype,
 		toString = objectPrototype.toString,
@@ -7,13 +14,13 @@
 		emptyFn = function(){},
 		i;
 	
-	if (typeof Hexin === 'undefined') {
-		var Hexin = function(){
-			this.name = 'Hexin';
+	if (typeof Panda === 'undefined') {
+		var Panda = function(){
+			this.name = 'Panda';
 			this.version = '1.10'; 
 		};
-		Hexin = new Hexin();
-        global.Hexin = Hexin;
+		Panda = new Panda();
+        global.Panda = Panda;
     }
 	
 	for (i in enumerablesTest) {
@@ -25,14 +32,14 @@
                        'toLocaleString', 'toString', 'constructor'];
     }
 
-    Hexin.enumerables = enumerables;
+    Panda.enumerables = enumerables;
 
     /**
      * 
      */
-    Hexin.apply = function(object, config, defaults) {
+    Panda.apply = function(object, config, defaults) {
         if (defaults) {
-            Hexin.apply(object, defaults);
+            Panda.apply(object, defaults);
         }
 
         if (object && config && typeof config === 'object') {
@@ -55,7 +62,7 @@
         return object;
     };
 	
-	Hexin.apply(Hexin, {
+	Panda.apply(Panda, {
 		isObject: (toString.call(null) === '[object Object]') ?
         function(value) {
             // 检查 ownerDocument 排除DOM节点
@@ -66,10 +73,4 @@
         }
 	});
 	
-	
 })();
-
-
-
-
-

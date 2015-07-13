@@ -15,9 +15,9 @@ module.exports = function(grunt) {
 		  ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
 		
 		concat: {
-			hexin: {
-				src: ['src/hexin.js'],
-				dest: 'dist/hexin-debug.js',
+			panda: {
+				src: ['src/panda.js'],
+				dest: 'dist/panda-debug.js',
 			},
 			util: {
 				src: ['src/util.js'],
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 							'<%= grunt.template.today("yyyy-mm-dd") %> */',
 			  },
 			  files: {
-				'dist/hexin.js': ['dist/hexin-debug.js'],
+				'dist/panda.js': ['dist/panda-debug.js'],
 				'dist/util.js': ['dist/util-debug.js'],
 			  }
 		  }

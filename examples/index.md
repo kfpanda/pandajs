@@ -1,6 +1,6 @@
 
 ````javascript
-seajs.use('hexin', function(hexin){
+seajs.use('panda', function(panda){
 
 });
 ````

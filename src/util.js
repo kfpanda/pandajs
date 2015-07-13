@@ -3,7 +3,7 @@
  * @file
  * @version 1.0.2
  * @copyright copyright
- * @author : liuhualuo@myhexin.com
+ * @author : liuhualuo@163.com
  */
 (function(){
 
@@ -14,7 +14,7 @@
 	 * @property {string} this.name 
 	 * @property {string} this.version
 	 * @type object
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 * @date : 2011-12-19
 	 */
 	var Util = function(){
@@ -27,7 +27,7 @@
 	 * Util.emptyFn 空方法
 	 * @class
 	 * @name emptyFn
-	 * @author : luhaining@myhexin.com
+	 * @author : luhaining@163.com
 	 * @date : 2013-05-22
 	 */
 	Util.emptyFn = function(){};
@@ -54,7 +54,7 @@
 	 * 将日期格式转换为标准格式的字符串，例如"2013-05-06 10:13:27 616"
 	 * @memberof Date
 	 * @param date 日期，为null则默认为new Date();
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 */
     Util.Date.getTime = function(date) {
         date = date ? date : new Date();
@@ -101,7 +101,7 @@
 	* @memberof Date
 	* @param date 日期
 	* @param pattern 日期格式，例如yyyy-MM-dd，如果为null默认为 yyyy-MM-dd HH:mm:ss SSS格式
-	* @author : luhaining@myhexin.com
+	* @author : luhaining@163.com
 	*/
     Util.Date.format = function(date, pattern) {
         var formatSymbols = "yMdHmsS";
@@ -162,7 +162,7 @@
 	* @memberof Date
 	* @param date 日期
 	* @param pattern 日期格式，例如yyyy-MM-dd，如果为null默认为 yyyy-MM-dd HH:mm:ss SSS格式
-	* @author : luhaining@myhexin.com
+	* @author : luhaining@163.com
 	*/
     Util.Date.parse = function(date, pattern) {
         var formatSymbols = "yMdHmsS";
@@ -224,7 +224,7 @@
 	 * Util.Decoder 编码格式转换类
 	 * @class
 	 * @name Decoder
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 * @date : 2011-12-19
 	 */
 	Util.Decoder = (function() {
@@ -234,7 +234,7 @@
 			 * native 转 ascii。
 			 * @type function
 			 * @param strNative 要转换的native。
-			 * @author : liuhualuo@myhexin.com
+			 * @author : liuhualuo@163.com
 			 * @date : 2011-12-19
 			 */
 			native2ascii: function(strNative) {
@@ -250,7 +250,7 @@
 			 * native 转 hex
 			 * @type function
 			 * @param n 要转换的native。
-			 * @author : liuhualuo@myhexin.com
+			 * @author : liuhualuo@163.com
 			 * @date : 2011-12-19
 			 */
 			toHex: function(n) {
@@ -263,7 +263,7 @@
 			 * ascii 转 native
 			 * @type function
 			 * @param strAscii 要转换的ascii字符串。
-			 * @author : liuhualuo@myhexin.com
+			 * @author : liuhualuo@163.com
 			 * @date : 2011-12-19
 			 */
 			ascii2native: function(strAscii) {
@@ -283,7 +283,7 @@
 			 * 转换为字节。
 			 * @type function
 			 * @param str 要转换的字符串。
-			 * @author : liuhualuo@myhexin.com
+			 * @author : liuhualuo@163.com
 			 * @date : 2011-12-19
 			 */
 			toChar: function(str) {
@@ -306,7 +306,7 @@
 	 * @param numberMillis 时间毫秒数。
 	 * @memberof Util
 	 * @type function
-	 * @author liuhualuo@myhexin.com
+	 * @author liuhualuo@163.com
 	 * @date 2012-11-28
 	 */
 	Util.sleep = function(numberMillis) {
@@ -324,7 +324,7 @@
 	 * @param xml 根据isPath参数的不同表示xml文档的名称或一个xml文档的字符串表示
 	 * @type function
 	 * @memberof Util
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 * @date : 2012-11-28
 	 */
 	Util.loadXML = function(xml, isPath) {
@@ -384,7 +384,7 @@
 	 * 将字符串的首字母转换为大写。
 	 * @param v 传入的字符串
 	 * @memberof Util
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 */
 	Util.changeFirstCase = function(v) {
 		v = String(v);
@@ -395,7 +395,7 @@
 	 * @param bytes 传入字节整数，必须为number类型。
 	 * @return 返回带单位格式字符串，如果bytes为非number类型，则返回为""
 	 * @memberof Util
-	 * @author : liuhualuo@myhexin.com
+	 * @author : liuhualuo@163.com
 	 */
 	Util.bytesSize = function( bytes ) {
     	if( typeof bytes != "number" ){
@@ -412,7 +412,7 @@
 	 * Util.Loop 循环执行类
 	 * @class
 	 * @memberof Util
-	 * @author luhaining@myhexin.com
+	 * @author luhaining@163.com
 	 * @date 2013-05-22
 	 */
 	Util.Loop = (function(){
@@ -459,7 +459,7 @@
 			 *			fail: Util.emptyFn;					// 失败方法
 			 *			timeout: Util.emptyFn;				// 超时方法
 			 *		}
-			 * @author luhaining@myhexin.com
+			 * @author luhaining@163.com
 			 * @date 2013-05-22
 			 */
 			loop: function(opt){
