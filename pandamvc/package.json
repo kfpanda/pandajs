@@ -1,0 +1,67 @@
+{
+  "name": "pandamvc",
+  "family": "hexin",
+  "version": "2.0.2",
+  "description": "pandamvc weituo",
+  "homepage": "http://pandamvc.com",
+  "author": {
+    "name": "liuhualuo@myhexin.com",
+    "email": "liuhualuo@myhexin.com",
+    "url": "liuhualuo@myhexin.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git:/pandamvc"
+  },
+  "bugs": {
+    "url": "http://pandamvc.com/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://pandamvc.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "src/pandamvc",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt nodeunit"
+  },
+  "spm": {
+    "alias": {
+      "jquery": "jquery/jquery/1.9.1/jquery",
+      "jquery-xml2json": "jquery/plugins/jquery.xml2json.js",
+      "sammy": "quirkey/sammy/0.7.4/sammy",
+      "sammy-json": "quirkey/sammy/0.7.4/plugins/sammy-json",
+      "sammy-storage": "quirkey/sammy/0.7.4/plugins/sammy-storage",
+      "sammy-template": "quirkey/sammy/0.7.4/plugins/sammy-template",
+      "class": "arale/class/1.0.0/class",
+      "hexin": "hexin/hexin/1.0.2/hexin",
+      "util": "hexin/hexin/1.0.2/util",
+      "protocol": "hexin/protocol/1.0.2/protocol"
+    },
+    "engines": {
+      "seajs": "seajs/seajs/2.0.0/sea.js"
+    },
+    "source": "src",
+    "output": [
+      
+    ]
+  },
+  "devDependencies": {
+    "grunt-spm-build": "~0.2.0",
+    "grunt-cmd-transport": "~0.2.0",
+    "grunt-cmd-concat": "~0.2.0",
+    "grunt-contrib-concat": "~0.1.2",
+    "grunt-contrib-uglify": "~0.1.1",
+    "grunt-contrib-jshint": "~0.1.1",
+    "grunt-contrib-nodeunit": "~0.1.2",
+    "grunt-contrib-watch": "~0.2.0",
+    "grunt-contrib-clean": "~0.4.0",
+    "grunt-contrib-copy": "~0.4.0",
+    "grunt": "~0.4.0"
+  },
+  "keywords": []
+}

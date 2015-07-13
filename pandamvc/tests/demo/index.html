@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<title></title>
+	<link rel="stylesheet" href="style/index.css" />
+</head>
+
+<body scroll="no" style="overflow:hidden">
+	<div id="bodyDiv">
+		<div id="header">
+			<ul id="nav">
+				<li><a href="#/home"><strong><span>首页</span></strong></a></li>
+				<li><a href="#/zxzx"><strong><span>资讯中心</span></strong></a></li>
+				<li><a href="#/cpzx"><strong><span>产品中心</span></strong></a></li>
+				<li><a href="#/wsyyt"><strong><span>网上营业厅</span></strong></a></li>
+				<li><a href="#/yhzx"><strong><span>用户中心</span></strong></a></li>
+				<li><a href="#/rjgj"><strong><span>软件管家</span></strong></a></li>
+				<li><a href="#/kshq"><strong><span>快速行情</span></strong></a></li>
+				<li><a href="#/wtjy"><strong><span>委托交易</span></strong></a></li>		
+				<li><a href="#/jymt"><strong><span>金玉满堂</span></strong></a></li>					
+			</ul>	
+		</div> 
+		<div id="content" class="clear">
+			
+		</div>
+	</div>
+	<script type="text/javascript" src="assets/jquery/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="assets/jquery/jquery.json-2.4.min.js"></script>
+	<script type="text/javascript" src="assets/jquery/plugins/jquery.cycle2.js"></script>
+	<script type="text/javascript" src="assets/sammy/sammy.js"></script>
+	<script type="text/javascript" src="assets/sammy/plugins/sammy.json.js"></script>
+	<script type="text/javascript" src="assets/sammy/plugins/sammy.storage.js"></script>
+	<script type="text/javascript" src="assets/sammy/plugins/sammy.template.js"></script>
+	<script type="text/javascript" src="assets/hexin/hexin/1.0.2/hexin-debug.js"></script>
+	<script type="text/javascript" src="assets/hexin/hexin/1.0.2/util-debug.js"></script>
+	<script type="text/javascript" src="assets/hexin/pandamvc/2.0.2/pandamvc.js"></script>
+	<script type="text/javascript" src="assets/hexin/protocol/2.0.1/protocol.js"></script>
+	<script type="text/javascript" src="assets/hexin/protocol/2.0.1/plugins/ajaxprotocol.js"></script>
+	<!-- 配置请求参数 -->
+	<script type="text/javascript" src="src/urls/UserInfoParam.js"></script>
+	<script type="text/javascript" src="src/urls/RcmdPrdctParam.js"></script>
+	<!-- controller 部分 -->
+	<script type="text/javascript" src="src/controller/HomeController.js"></script>
+	<script type="text/javascript" src="src/controller/base/BeforeController.js"></script>
+	<script type="text/javascript" src="src/controller/base/AfterController.js"></script>
+	<script type="text/javascript" src="src/controller/HtzxrkController.js"></script>
+	<script type="text/javascript" src="src/controller/HtzxzkController.js"></script>
+	<script type="text/javascript" src="src/controller/ZgcpController.js"></script>
+	<script type="text/javascript" src="src/controller/CpzxController.js"></script>
+	<script type="text/javascript" src="src/controller/ZxzxController.js"></script>
+	<script type="text/javascript" src="src/controller/JjcpController.js"></script>
+	<script type="text/javascript" src="src/controller/AdvController.js"></script>
+	<script type="text/javascript" src="src/controller/RecomPrctController.js"></script>
+	<script type="text/javascript" src="src/controller/endController.js"></script>
+	<script type="text/javascript" src="src/controller/JrtsController.js"></script>
+	<script type="text/javascript" src="src/controller/HttjcpController.js"></script>
+	<!-- testController的模板 -->
+	<script type="text/javascript" src="src/templates/beginController.js"></script>
+	<!-- 添加路由URLList到URI -->
+	<script type="text/javascript" src="src/URIList.js"></script>
+	<script>
+		$("body").delegate(".haschild",'click', function(){
+			$(this).siblings("dd").hide();
+			$(this).next().show();
+		})
+		$("body").delegate("#ddd",'click', function(){
+			$(this).siblings("dd").hide();
+			$(this).next().show();
+		})
+	</script>
+	<!-- 程序入口 -->
+	<script type="text/javascript">
+		//根据URI跳转
+		var askPath = document.location.href;
+		var result = askPath.split("#");
+
+		if(result[1] != undefined && result[1] != ""){
+			mvc.URI.setHomeURI("#"+result[1]);	
+		}
+		mvc.appRun();
+
+		//mvc.app.runRoute("","#"+result[1]);
+	</script>
+</body>
+
+</html>
+
+

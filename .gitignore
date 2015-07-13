@@ -2,3 +2,6 @@
 /Makefile
 /assets
 /dist
+/panda/node_modules
+/protocol/node_modules
+/pandamvc/node_modules

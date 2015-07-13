@@ -1,0 +1,1 @@
+var testTpl = '<div id="head"></div><div id="content"></div><div id="footer">	footer</div>';

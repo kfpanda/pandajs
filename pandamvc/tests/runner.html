@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>protocol test</title>
+		<link rel="stylesheet" href="css/mocha.css" type="text/css" charset="utf-8" />
+		
+		<script src="js/expect.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mocha.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/chai.js" type="text/javascript" charset="utf-8"></script>
+		<script id="seajsnode" src="../assets/seajs/2.0.0/sea-debug.js" 
+        					data-config="./config.js" type="text/javascript"></script>
+        
+		<script>
+			var time = new Date().getTime();
+		//seajs.use("./js/mocha.js", function(){
+			mocha.setup('bdd');
+			
+			seajs.use("./pandamvc_test.js", function(){
+				if(window.mochaPhantomJS){
+					mochaPhantomJS.run();
+				}else{
+					mocha.run();
+				}
+			});
+		//});
+		</script>
+		
+	</head>
+
+	<body scroll="no">
+		<div id="mocha"> </div>
+	</body>
+	
+</html>
+
+
+			
