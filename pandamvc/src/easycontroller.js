@@ -73,10 +73,11 @@
 			var that = this;
 			if( this.template && this.selector ){
 				//渲染模版
+                var tmpl = $(mvc.template).find("#" + this.template).text();
 				if(this.append){
-					$(this.selector).append(mvc.Tmpl(this.template, this._data));
+					$(this.selector).append(mvc.Tmpl(tmpl, this._data));
 				}else{
-					$(this.selector).html(mvc.Tmpl(this.template, this._data));
+					$(this.selector).html(mvc.Tmpl(tmpl, this._data));
 				}
 			}
 

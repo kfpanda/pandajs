@@ -1,6 +1,6 @@
 /**
  * @comment : 框架控制类
- * @author   : liuhualuo@myhexin.com
+ * @author   : liuhualuo@163.com
  * @create   : 2012-7-18
  */
 (function($) {

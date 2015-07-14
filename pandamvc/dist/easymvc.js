@@ -124,7 +124,7 @@
 		var context = uriList.context || {};
 		return context.after_controller;
 	}
-
+	//获取url的参数
 	URI.getQueryString = function(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);
@@ -145,7 +145,7 @@
 	/**
 	 * @Comments : 获得特定的请求参数。
 	 * @param    :  paramName 为参数名, paramType为ParamType对象中属性。
-	 * @author   : liuhualuo@myhexin.com
+	 * @author   : liuhualuo@163.com
 	 * @create   : 2012-7-23
 	 */
 	URI.getURIS = function(){
@@ -153,7 +153,25 @@
 	}
 	
 	URI.getURI = function(uri){
-		return uriList[uri];
+		if(uri && uri != ""){
+			return uriList[uri];
+		}else{
+			return URI.getLocationURI();
+		}
+	}
+	/**
+	 * @Comments : 通过地址栏uri，获取对应的item。
+	 * @author   : liuhualuo@163.com
+	 * @create   : 2015-7-14
+	 */
+	URI.getLocationURI = function(){
+		//url中#后面的一段参数
+		var hash = window.location.hash;
+		if(hash && hash != ""){
+			return uriList[hash];
+		}
+		//window.location.pathname 为url 不带?的url
+		return uriList[window.location.pathname];
 	}
 	
 	URI.addURI = function(uris){
@@ -247,10 +265,11 @@
 			var that = this;
 			if( this.template && this.selector ){
 				//渲染模版
+                var tmpl = $(mvc.template).find("#" + this.template).text();
 				if(this.append){
-					$(this.selector).append(mvc.Tmpl(this.template, this._data));
+					$(this.selector).append(mvc.Tmpl(tmpl, this._data));
 				}else{
-					$(this.selector).html(mvc.Tmpl(this.template, this._data));
+					$(this.selector).html(mvc.Tmpl(tmpl, this._data));
 				}
 			}
 
@@ -285,7 +304,9 @@
 	};
 	this.mvc = new mvc();
 	mvc = this.mvc;
-	
+    //所有模版缓存的内容
+	mvc.template = "";
+
 	var Clone = function(object) {
         var clone = {};
         var cloneOf = function(item) {
@@ -310,6 +331,11 @@
 	mvc.routeRun = function(uri){
 		
 		var uriItem = mvc.URI.getURI(uri);
+		if(typeof uriItem != "object"){
+			//未找到匹配的uri路由
+			logger.error(uri + " is not match route.");
+			return ;
+		}
 		var _self = this;
 		
 		var layout = uriItem.layout;

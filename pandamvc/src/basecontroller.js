@@ -1,6 +1,6 @@
 /**
  * @comment : 基础控制器类
- * @author   : liuhualuo@myhexin.com
+ * @author   : liuhualuo@163.com
  * @create   : 2012-7-18
  */
 (function($) {

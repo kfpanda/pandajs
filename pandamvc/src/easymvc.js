@@ -14,7 +14,9 @@
 	};
 	this.mvc = new mvc();
 	mvc = this.mvc;
-	
+    //所有模版缓存的内容
+	mvc.template = "";
+
 	var Clone = function(object) {
         var clone = {};
         var cloneOf = function(item) {
@@ -39,6 +41,11 @@
 	mvc.routeRun = function(uri){
 		
 		var uriItem = mvc.URI.getURI(uri);
+		if(typeof uriItem != "object"){
+			//未找到匹配的uri路由
+			logger.error(uri + " is not match route.");
+			return ;
+		}
 		var _self = this;
 		
 		var layout = uriItem.layout;

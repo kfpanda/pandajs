@@ -64,7 +64,7 @@
 		var context = uriList.context || {};
 		return context.after_controller;
 	}
-
+	//获取url的参数
 	URI.getQueryString = function(name) {
 		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
 		var r = window.location.search.substr(1).match(reg);
@@ -85,7 +85,7 @@
 	/**
 	 * @Comments : 获得特定的请求参数。
 	 * @param    :  paramName 为参数名, paramType为ParamType对象中属性。
-	 * @author   : liuhualuo@myhexin.com
+	 * @author   : liuhualuo@163.com
 	 * @create   : 2012-7-23
 	 */
 	URI.getURIS = function(){
@@ -93,7 +93,25 @@
 	}
 	
 	URI.getURI = function(uri){
-		return uriList[uri];
+		if(uri && uri != ""){
+			return uriList[uri];
+		}else{
+			return URI.getLocationURI();
+		}
+	}
+	/**
+	 * @Comments : 通过地址栏uri，获取对应的item。
+	 * @author   : liuhualuo@163.com
+	 * @create   : 2015-7-14
+	 */
+	URI.getLocationURI = function(){
+		//url中#后面的一段参数
+		var hash = window.location.hash;
+		if(hash && hash != ""){
+			return uriList[hash];
+		}
+		//window.location.pathname 为url 不带?的url
+		return uriList[window.location.pathname];
 	}
 	
 	URI.addURI = function(uris){
