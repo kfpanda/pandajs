@@ -1,6 +1,6 @@
 /**
  * @comment : 简单的框架实现类
- * @author   : liuhualuo@myhexin.com
+ * @author   : liuhualuo@163.com
  * @create   : 2012-7-18
  */
 (function(){
@@ -33,94 +33,10 @@
         return clone;
     };
 	
-	mvc.URI = (function(){
-		
-		var homeURI = '#/home';
-		var templateSuffix = "tpl";
-		var uriList = {};
-		
-		var hasURI = function(str){
-			return (typeof uriList[str] == "object");
-		}
-		
-		return {
-			/**
-			 * uriList是否包含uri路径
-			 * @params {Sting} "#/im/home"
-			 */
-			hasURI: function(str) {
-	            return hasURI(str);
-	        },
-			
-			setHomeURI: function(uri) {
-				if( hasURI(str) ){
-					uriList.context.homeURI = uri;
-				}else{
-					logger.error("mvc.setHomeURI error: mvc.context not exist uri(" + uri + ")");
-				}
-	        },
-			
-			getHomeURI : function(){
-				var context = uriList.context || {};
-				return context.homeURI || homeURI;
-			},
-			
-			getTemplateSuffix : function(){
-				var context = uriList.context || {};
-				return context.templateSuffix || templateSuffix;
-			},
-			
-			//获取BeforeController
-			getBeforeController : function(){
-				var context = uriList.context || {};
-				return context.before_controller;
-			},
-			
-			//获取afterController
-			getAfterController : function(){
-				var context = uriList.context || {};
-				return context.after_controller;
-			},
-			
-			isRefresh : function(refreshFlag){
-				var context = uriList.context || {};
-				if( context.refresh && context.refreshFlag != refreshFlag ){
-					return true;//刷新
-				}
-				return false;//不刷新
-			},
-			
-			/**
-			 * @Comments : 获得特定的请求参数。
-			 * @param    :  paramName 为参数名, paramType为ParamType对象中属性。
-			 * @author   : liuhualuo@myhexin.com
-			 * @create   : 2012-7-23
-			 */
-			getURIS : function(){
-				return uriList;
-			},
-			
-			getURI : function(uri){
-				return uriList[uri];
-			},
-			
-			addURI : function(uris){
-				for( key in uris ){
-					var value = uris[key];
-					parentValue = {};
-					//如果有继承父类，获取父类继承。
-					if( typeof value.extend == "object" && value.extend != null ){
-						parentValue = uris[value.extend];
-					}
-					uriList[key] = $.extend(true, {}, parentValue, value);
-				}
-			}
-		}
-	});
-	
+	mvc.URI = URI;
 	var tempCache = {};
 	
-	mvn.routeRun = function(uri){
+	mvc.routeRun = function(uri){
 		
 		var uriItem = mvc.URI.getURI(uri);
 		var _self = this;
@@ -136,8 +52,8 @@
 				tempCache[uuid] = $(lItem.selector).html();
 			}
 			
-			if( !mvc.URI.isRefresh(_self.params["refresh"])
-				&& value.request ){
+			if( !mvc.URI.isRefresh(URI.getQueryString("refresh"))
+				&& uriItem.request ){
 				//不刷新页面
 				var tempHtml = tempCache[lItem.id];
 				if(tempHtml && lItem.selector){
@@ -148,7 +64,6 @@
 				
 				var controller = lItem.controller;
 				controller = new controller({
-					// context	: context,
 					// params : _self.params,
 					append : lItem.append,
 					selector : lItem.selector,
@@ -201,5 +116,6 @@
 		// Provide some basic currying to the user
 		return data ? fn(data) : fn;
 	};
-
-})();
+	
+	window.mvc = mvc;
+})(jQuery);

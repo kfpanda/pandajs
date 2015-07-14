@@ -15,15 +15,17 @@ module.exports = function(grunt) {
 		  ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
 		
 		concat: {
-		  register: {
-			options: {
-			  pkg: pkg,
-			  paths: ['assets']
-			},
-			files: {
-				'dist/pandamvc.js': ['src/class.js', 'src/uri.js', 'src/pandamvc.js', 'src/basecontroller.js']
+		  	register:{
+				options: {
+				  pkg: pkg,
+				  separator: ';',
+				  paths: ['assets']
+				},
+				files: {
+					'dist/easymvc.js' : ['src/class.js', 'src/uri.js', 'src/easycontroller.js', 'src/easymvc.js'],
+					'dist/pandamvc.js': 'src/pandamvc.js',
+				}
 			}
-		  }
 		},
 		
 		uglify: {
@@ -58,9 +60,6 @@ module.exports = function(grunt) {
 				cwd: '.build/src',
 				src: ['**/*-debug.js'], 
 				dest: 'dist/'
-			},{
-				src:['src/easymvc.js'],
-				dest: 'dist/easymvc-debug.js'
 			}]
 		  },
 		  main: {
@@ -71,13 +70,30 @@ module.exports = function(grunt) {
 			]
 		  }
 		},
+
+		combo: {
+			options: {
+				sourceMap: {
+					//sourceRoot: '/src/'
+				}
+			},
+			build: {
+				files: [{
+					expand: true,
+					cwd: 'src/',
+					src: '**/*.js',
+					dest: 'dist/combo/',
+					ext: '.combo.js'
+				}]
+			}
+		},
 		
 		clean: {
 			tests: ['dist', 'assets/<%= pkg.family %>/<%= pkg.name %>/<%= pkg.version %>/'],
 			build: ['.build']
 		},
 		nodeunit: {
-			files: ['test/**/*_test.js']
+			files: ['tests/**/*_test.js']
 		},
 		jshint: {
 		  options: {
@@ -110,16 +126,21 @@ module.exports = function(grunt) {
 			tasks: ['jshint:test', 'nodeunit']
 		  },
 		},
-	
 	});
-
+	
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-nodeunit');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-qunit');
+	
+	grunt.registerTask('test', ['nodeunit']);
 
-	grunt.registerTask('build', ['clean:tests', 'concat', 'uglify',  'copy', 'clean:build']);
+	grunt.registerTask('build', ['clean:tests', 'concat', 'uglify', 'copy', 'clean:build']);
+
+	grunt.registerTask('combobuild', ['combo']);
 	
 };

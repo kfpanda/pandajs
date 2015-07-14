@@ -1,6 +1,6 @@
 /**
  * @comment : uri配置规范实现类
- * @author   : liuhualuo@myhexin.com
+ * @author   : liuhualuo@163.com
  * @create   : 2012-7-18
  */
 (function($) {
@@ -31,7 +31,10 @@
 		try{
 			uri = str.substr(2).replace('/', '_') + '_uri'; // #/im/home -> im_home_uri
 		}catch(e){}
-		return Hexin.isObject(uriList[uri]);
+		if( typeof uriList[uri] == "object" ){
+			return true;
+		}
+		return false;
 	}
 	
 	URI.setHomeURI = function(uri) {
@@ -60,6 +63,15 @@
 	URI.getAfterController = function(){
 		var context = uriList.context || {};
 		return context.after_controller;
+	}
+
+	URI.getQueryString = function(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null){
+			return unescape(r[2]);
+		}
+		return null;
 	}
 	
 	URI.isRefresh = function(refreshFlag){
@@ -91,7 +103,11 @@
 			if( !$.isEmptyObject(value.extend) ){
 				parentValue = uris[value.extend];
 			}
-			uriList[key] = $.extend(true, parentValue, value);
+			if(key == "context"){
+				uriList[key] = $.extend(true, parentValue, value);
+			}else{
+				uriList[value.uri] = $.extend(true, parentValue, value);
+			}
 		});
 	}
 	//	}
