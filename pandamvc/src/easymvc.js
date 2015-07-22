@@ -61,6 +61,7 @@
 			
 			if( !mvc.URI.isRefresh(URI.getQueryString("refresh"))
 				&& uriItem.request ){
+                logger.log("render cache page.");
 				//不刷新页面
 				var tempHtml = tempCache[lItem.id];
 				if(tempHtml && lItem.selector){
@@ -80,6 +81,8 @@
 				try{
 					controller.server();
 				}catch(e){
+                    controller.destroy();
+                    controller = null;
 					logger.error([e, lItem]);
 				}
 			}
@@ -125,4 +128,8 @@
 	};
 	
 	window.mvc = mvc;
+
+    window.onhashchange=function(){
+        mvc.routeRun();
+    }
 })(jQuery);

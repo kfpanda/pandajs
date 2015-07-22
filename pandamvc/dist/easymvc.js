@@ -415,4 +415,8 @@
 	};
 	
 	window.mvc = mvc;
+
+    window.onhashchange=function(){
+        mvc.routeRun();
+    }
 })(jQuery);

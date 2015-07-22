@@ -4,7 +4,10 @@
  * @create   : 2012-7-18
  */
 (function($) {
-		
+	
+    window.logger = (typeof logger != "object") ? 
+					{log:function(){}, error:function(){}} : logger;
+
 	var EasyController = Class.extend({
 		append : null,
 		selector : null,
