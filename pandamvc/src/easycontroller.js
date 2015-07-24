@@ -9,6 +9,7 @@
 					{log:function(){}, error:function(){}} : logger;
 
 	var EasyController = Class.extend({
+        params : null,
 		append : null,
 		selector : null,
 		template : null,
@@ -90,6 +91,7 @@
 
 		},
 		destroy : function(){
+            this.params = null;
 			this.append = null;
 			this.selector = null;
 			this.template = null;

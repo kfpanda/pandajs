@@ -196,8 +196,12 @@
  * @create   : 2012-7-18
  */
 (function($) {
-		
+	
+    window.logger = (typeof logger != "object") ? 
+					{log:function(){}, error:function(){}} : logger;
+
 	var EasyController = Class.extend({
+        params : null,
 		append : null,
 		selector : null,
 		template : null,
@@ -279,6 +283,7 @@
 
 		},
 		destroy : function(){
+            this.params = null;
 			this.append = null;
 			this.selector = null;
 			this.template = null;
@@ -328,7 +333,52 @@
 	mvc.URI = URI;
 	var tempCache = {};
 	
+    var reg = new RegExp("([^&]*)=([^&]*)(&|$)", "g");
+    var parseUri = function(uri){
+        //var r = uri.match(reg)
+        var param = {};
+        while( (arr = reg.exec(uri)) != null){
+            if(arr.length >2){
+                param[arr[1]] = arr[2];
+            }
+        }
+        return param;
+    }
+
+    /**
+	 * @Comments : uri跳转
+	 * @author   : liuhualuo@163.com
+	 * @create   : 2015-7-23
+	 */
+    mvc.href = function(uri){
+        if(uri && typeof uri == "string"){
+            if(uri.indexOf("#") == 0){
+                window.location.hash = uri;
+            }else{
+                window.location.href = uri;
+            }
+        }
+    }
+
+    /**
+	 * @Comments : mvc 路由
+	 * @author   : liuhualuo@163.com
+	 * @create   : 2015-6-23
+	 */
 	mvc.routeRun = function(uri){
+        
+        var params = {};
+        if(uri && typeof uri == "string"){
+            //去除uri上的参数
+            if(uri.indexOf("?") > -1){
+                //解析url中的参数
+                params = parseUri(uri.substring(uri.indexOf("?") + 1, uri.length));
+                uri = uri.substring(0, uri.indexOf("?"));
+            }
+        }else{
+            logger.error("uri is " + uri);
+            return ;
+        }
 		
 		var uriItem = mvc.URI.getURI(uri);
 		if(typeof uriItem != "object"){
@@ -351,6 +401,7 @@
 			
 			if( !mvc.URI.isRefresh(URI.getQueryString("refresh"))
 				&& uriItem.request ){
+                logger.log("render cache page.");
 				//不刷新页面
 				var tempHtml = tempCache[lItem.id];
 				if(tempHtml && lItem.selector){
@@ -361,7 +412,7 @@
 				
 				var controller = lItem.controller;
 				controller = new controller({
-					// params : _self.params,
+					params : params || {},
 					append : lItem.append,
 					selector : lItem.selector,
 					template : lItem.template
@@ -370,6 +421,8 @@
 				try{
 					controller.server();
 				}catch(e){
+                    controller.destroy();
+                    controller = null;
 					logger.error([e, lItem]);
 				}
 			}
@@ -416,7 +469,7 @@
 	
 	window.mvc = mvc;
 
-    window.onhashchange=function(){
-        mvc.routeRun();
+    window.onhashchange = function(){
+        mvc.routeRun(window.location.hash);
     }
 })(jQuery);

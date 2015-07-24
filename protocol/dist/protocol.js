@@ -25,7 +25,7 @@
 		var oName = prmObj.getName();
 		// alert(oName);
 		var objParams = prmObj.paramList;
-		var defaultParam = objParams["defaultParam"];
+		var defaultParam = objParams["defaultParam"] || {};
 		
 		//处理获取参数规则
 		var specFunc = function(paramName){
