@@ -52,11 +52,19 @@
 
     /**
 	 * @Comments : uri跳转
+     * @param uri 跳转uri
+     * @param refresh 不传默认为刷新页面.
 	 * @author   : liuhualuo@163.com
 	 * @create   : 2015-7-23
 	 */
-    mvc.href = function(uri){
+    mvc.href = function(uri, refresh){
         if(uri && typeof uri == "string"){
+            if(!refresh){
+                //增加时间戳
+                var t = new Date().getTime();
+                uri = uri.indexOf("?") > -1 ? uri + "&t=" + t 
+                    : uri + "?t=" + t;
+            }
             if(uri.indexOf("#") == 0){
                 window.location.hash = uri;
             }else{
