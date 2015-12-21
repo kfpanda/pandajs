@@ -361,7 +361,8 @@
                     : uri + "?t=" + t;
             }
             if(uri.indexOf("#") == 0){
-                window.location.hash = uri;
+                //window.location.hash = uri;
+                window.location.href = window.location.pathname + uri;
             }else{
                 window.location.href = uri;
             }
