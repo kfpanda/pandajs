@@ -23,6 +23,7 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'dist/protocol.js' : ['src/urlparam.js', 'src/protocol.js'],
+                    'dist/plugins/testajaxprotocol.js': 'src/plugins/testajaxprotocol.js',
 					'dist/plugins/ajaxprotocol.js': 'src/plugins/ajaxprotocol.js',
 					'dist/plugins/clientprotocol.js': 'src/plugins/clientprotocol.js',
 					'dist/plugins/imclientprotocol.js': 'src/plugins/imclientprotocol.js',

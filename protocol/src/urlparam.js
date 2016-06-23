@@ -71,4 +71,8 @@
 		return specParam;
 	}
 
+    URLParam.getParamList = function(){
+        return paramList;
+    }
+
 })();

@@ -71,6 +71,10 @@
 		return specParam;
 	}
 
+    URLParam.getParamList = function(){
+        return paramList;
+    }
+
 })();
 ;/**
  * @comment : 请求提供类
